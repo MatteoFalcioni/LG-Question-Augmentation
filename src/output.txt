@@ -1,6 +1,23 @@
+Which park in Bologna is the most recently developed and which is the longest established?
+What is the enrollment process for kindergartens at various schools in Bologna?
+What is the distribution of museums and community centers in Bologna?
+How does the presence of elderly residents relate to the available amenities in various public squares in Bologna?
+Which district in Bologna has the largest percentage of elderly residents?
 
+---- ^gpt 4o, gpt 4.1 T0.7, gpt 4.1 T0
 
-UNKNOWN
-<UNKNOWN>
-I'm sorry, but I need the semantic, spatial, and temporal parameters to generate the final question. Could you please provide them?
-I'm sorry, but I need the semantic, spatial, and temporal parameters to generate the final question. Could you please provide them?
+What is the most recently developed or most historic street in the city centre?
+What is the availability of places in different kindergartens across Bologna?
+What is the distribution of museums and cultural centers in Bologna?
+What is the distribution of university students and available amenities across various university districts in Bologna?
+Which district of Bologna has the highest proportion of elderly residents?
+
+---- ^gpt 4o, gpt 4.1 T0.7, claude 4.5 T0
+
+Which are the most recently developed and the historically oldest public parks in Bologna?
+What is the admission process for various kindergartens across Bologna?
+Where are the art galleries and music schools located in Bologna?
+What is the distribution of students and available amenities in various popular squares in Bologna?
+Which district of Bologna has the highest proportion of elderly residents?
+
+---- ^gpt 4o, gpt 4.1 T0.7, gpt 4.1 T0.7

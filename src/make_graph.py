@@ -28,13 +28,12 @@ augmenter_agent = create_agent(
 )
 
 collator_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0),
+    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),
     tools=[],
     system_prompt=collator_prompt,
     state_schema=QuestionState,
     response_format=QuestionOutput
 )
-
 
 def create_graph(plot_graph=False) -> StateGraph:
     def separate_parameters(state : QuestionState) -> QuestionState:
@@ -50,7 +49,7 @@ def create_graph(plot_graph=False) -> StateGraph:
 
     def augment_parameters(state : QuestionState) -> QuestionState:
         """Augments the parameters using the augmenter agent"""
-        result = augmenter_agent.invoke(state)
+        result = augmenter_agent.invoke({"messages": [HumanMessage(f"Update the following parameters: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]})
         structured_result = result["structured_response"]  # this is an OutputTemplate object
 
         return {
@@ -63,11 +62,9 @@ def create_graph(plot_graph=False) -> StateGraph:
         """Collates the parameters using the collator agent"""
         file_path = "./output.txt"
 
-        print(f"***State: {state}***")
+        message = [HumanMessage(f"Combine the following parameters into a final question: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]
 
-        messages = [HumanMessage("Combine the parameters into a final question")]
-
-        result = collator_agent.invoke({"temporal": state['temporal'], "spatial": state['spatial'], "semantic": state['semantic'], "messages": messages})
+        result = collator_agent.invoke({"messages": message})
         structured_result = result["structured_response"]  # this is an QuestionOutput object
 
         final_question = structured_result.final_question
