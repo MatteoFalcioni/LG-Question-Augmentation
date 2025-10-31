@@ -4,6 +4,8 @@ You are an AI assistant helping to collate the parameters of a question into a f
 You will be given the identified semantic, spatial, and temporal content.
 You must collate the three parts into a final question.
 
+Some parts of the question may be empty: you can generate that part from scratch, or leave it empty - your choice.
+
 The response must be a single string for the final question.
 
 Example:

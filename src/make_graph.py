@@ -1,11 +1,13 @@
 from state import QuestionState, ComponentOutput, QuestionOutput
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from prompts.augmenter import augmenter_prompt 
 from prompts.separator import separator_prompt 
 from prompts.collator import collator_prompt
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage
 
 load_dotenv()
 
@@ -18,15 +20,15 @@ separator_agent = create_agent(
 )
 
 augmenter_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),  # probabòy higher T in order to have several different augmentations
+    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),  # probably higher T in order to have several different augmentations
     tools=[],
     system_prompt=augmenter_prompt,
     state_schema=QuestionState,
     response_format=ComponentOutput
 )
 
-final_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4o-mini", temperature=0),
+collator_agent = create_agent(
+    model=ChatOpenAI(model="gpt-4.1", temperature=0),
     tools=[],
     system_prompt=collator_prompt,
     state_schema=QuestionState,
@@ -57,14 +59,19 @@ def create_graph(plot_graph=False) -> StateGraph:
             "spatial" : structured_result.spatial
         }
 
-    def generate_final_question(state : QuestionState) -> QuestionState:
-        """Generates the final question using the final agent"""
+    def collate_parameters(state : QuestionState) -> QuestionState:
+        """Collates the parameters using the collator agent"""
         file_path = "./output.txt"
 
-        result = final_agent.invoke(state)
+        print(f"***State: {state}***")
+
+        messages = [HumanMessage("Combine the parameters into a final question")]
+
+        result = collator_agent.invoke({"temporal": state['temporal'], "spatial": state['spatial'], "semantic": state['semantic'], "messages": messages})
         structured_result = result["structured_response"]  # this is an QuestionOutput object
 
         final_question = structured_result.final_question
+        print(f"***Final question: {final_question}***")
         with open(file_path, "a") as f:
             f.write(final_question + "\n")
 
@@ -73,12 +80,12 @@ def create_graph(plot_graph=False) -> StateGraph:
 
     builder.add_node("separate_parameters", separate_parameters)
     builder.add_node("augment_parameters", augment_parameters)
-    builder.add_node("generate_final_question", generate_final_question)
+    builder.add_node("collate_parameters", collate_parameters)
 
     builder.add_edge(START, "separate_parameters")
     builder.add_edge("separate_parameters", "augment_parameters")
-    builder.add_edge("augment_parameters", "generate_final_question")
-    builder.add_edge("generate_final_question", END)
+    builder.add_edge("augment_parameters", "collate_parameters")
+    builder.add_edge("collate_parameters", END)
 
     graph = builder.compile()
 
