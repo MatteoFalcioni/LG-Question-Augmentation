@@ -1,18 +1,27 @@
 from state import QuestionState, ComponentOutput, QuestionOutput
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
-from langchain_anthropic import ChatAnthropic
+#from langchain_anthropic import ChatAnthropic
 from prompts.augmenter import augmenter_prompt 
 from prompts.separator import separator_prompt 
 from prompts.collator import collator_prompt
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
+import os
 
 load_dotenv()
 
+separator_model = os.environ.get("SEPARATOR_MODEL", "gpt-4.1")
+augmenter_model = os.environ.get("AUGMENTER_MODEL", "gpt-4.1")
+collator_model = os.environ.get("COLLATOR_MODEL", "gpt-4o")
+
+separator_temperature = float(os.environ.get("SEPARATOR_TEMPERATURE", 0.7))
+augmenter_temperature = float(os.environ.get("AUGMENTER_TEMPERATURE", 0.7))
+collator_temperature = float(os.environ.get("COLLATOR_TEMPERATURE", 0.7))
+
 separator_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4o-mini", temperature=0),
+    model=ChatOpenAI(model=separator_model, temperature=separator_temperature),
     tools=[],
     system_prompt=separator_prompt,
     state_schema=QuestionState,
@@ -20,7 +29,7 @@ separator_agent = create_agent(
 )
 
 augmenter_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),  # probably higher T in order to have several different augmentations
+    model=ChatOpenAI(model=augmenter_model, temperature=augmenter_temperature),  # probably higher T in order to have several different augmentations
     tools=[],
     system_prompt=augmenter_prompt,
     state_schema=QuestionState,
@@ -28,7 +37,7 @@ augmenter_agent = create_agent(
 )
 
 collator_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),
+    model=ChatOpenAI(model=collator_model, temperature=collator_temperature),
     tools=[],
     system_prompt=collator_prompt,
     state_schema=QuestionState,
@@ -44,7 +53,8 @@ def create_graph(plot_graph=False) -> StateGraph:
         return {
             "semantic" : structured_result.semantic,
             "temporal" : structured_result.temporal,
-            "spatial" : structured_result.spatial
+            "spatial" : structured_result.spatial,
+            "stakeholder" : structured_result.stakeholder
         }
 
     def augment_parameters(state : QuestionState) -> QuestionState:
@@ -55,7 +65,8 @@ def create_graph(plot_graph=False) -> StateGraph:
         return {
             "semantic" : structured_result.semantic,
             "temporal" : structured_result.temporal,
-            "spatial" : structured_result.spatial
+            "spatial" : structured_result.spatial,
+            "stakeholder" : structured_result.stakeholder
         }
 
     def collate_parameters(state : QuestionState) -> QuestionState:

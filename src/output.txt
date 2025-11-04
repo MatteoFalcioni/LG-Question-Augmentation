@@ -21,3 +21,26 @@ What is the distribution of students and available amenities in various popular 
 Which district of Bologna has the highest proportion of elderly residents?
 
 ---- ^gpt 4o, gpt 4.1 T0.7, gpt 4.1 T0.7
+
+Which areas in Bologna are the most densely and least densely populated?
+What is the availability of places in public kindergartens across the different districts of Bologna?
+How accessible are public parks and community centers in Bologna?
+What is the distribution of elderly residents and available healthcare facilities across various districts within Bologna?
+Which city district has the highest proportion of elderly residents?
+
+---- ^gpt 4o, gpt 4.1 T0.7, gpt 4.1 T0.7 including stakeholders
+
+How has the development of public parks in Bologna evolved over time?
+What is the availability of spots in primary schools in Bologna?
+Where are the sports facilities and community centers located in the different neighbourhoods of Bologna?
+What is the distribution of international students aged 18-25 and the availability of affordable housing options in the university districts of Bologna?
+Which districts in Bologna have the highest proportion of elderly residents?
+
+separator_model = gpt-4.1
+separator_temperature = 0.7
+augmenter_model = gpt-4.1
+augmenter_temperature = 0.7
+collator_model = gpt-4o
+collator_temperature = 0.7
+
+
