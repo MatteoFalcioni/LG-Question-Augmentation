@@ -9,6 +9,8 @@ from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 import os
+import datetime
+import csv
 
 load_dotenv()
 
@@ -61,7 +63,21 @@ def create_graph(plot_graph=False) -> StateGraph:
         """Augments the parameters using the augmenter agent"""
         result = augmenter_agent.invoke({"messages": [HumanMessage(f"Update the following parameters: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]})
         structured_result = result["structured_response"]  # this is an OutputTemplate object
-
+        #to append parameters to a csv file:
+        date = datetime.datetime.now().strftime("%d%m%Y_%H%M")
+        file_path = f"./logs/logs_{date}/output_{date}.csv"
+        fields = [' semantic', ' temporal', ' spatial', ' stakeholder']
+        dict = [{
+            " semantic": structured_result.semantic,
+            " temporal": structured_result.temporal,
+            " spatial": structured_result.spatial,
+            " stakeholder": structured_result.stakeholder
+        }]
+        with open(file_path, "a", newline= '\n') as f:
+            writer = csv.DictWriter(f, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(dict)
+            
         return {
             "semantic" : structured_result.semantic,
             "temporal" : structured_result.temporal,
@@ -71,7 +87,8 @@ def create_graph(plot_graph=False) -> StateGraph:
 
     def collate_parameters(state : QuestionState) -> QuestionState:
         """Collates the parameters using the collator agent"""
-        file_path = "./output.txt"
+        date = datetime.datetime.now().strftime("%d%m%Y_%H%M")
+        file_path = f"./logs_{date}/output_{date}.csv"
 
         message = [HumanMessage(f"Combine the following parameters into a final question: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]
 
@@ -80,8 +97,11 @@ def create_graph(plot_graph=False) -> StateGraph:
 
         final_question = structured_result.final_question
         print(f"***Final question: {final_question}***")
-        with open(file_path, "a") as f:
+        with open("output.txt", "a") as f:
             f.write(final_question + "\n")
+        with open(file_path, "a", newline= '\n') as f:
+            writer = csv.writer(f)
+            writer.writerow([final_question + '\n'])
 
 
     builder = StateGraph(QuestionState)
@@ -103,7 +123,6 @@ def create_graph(plot_graph=False) -> StateGraph:
             f.write(graph.get_graph().draw_mermaid_png())
 
     return graph
-
  
 
 

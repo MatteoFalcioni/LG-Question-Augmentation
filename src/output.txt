@@ -44,3 +44,14 @@ collator_model = gpt-4o
 collator_temperature = 0.7
 
 
+How does the population growth compare between the newest and oldest neighbourhoods in individual areas across Bologna, considering demographic changes over time?
+What are the monthly fees for nurseries in different preschools in Bologna?
+What are the locations of sports facilities and community centers in the various districts of Bologna?
+What is the distribution of international students and the availability of cultural facilities in districts of Bologna with a high presence of international students?
+What are the most and least recently constructed public parks in Bologna when comparing their establishment dates from historical times to the present?
+What is the availability of spots for kindergartens in the city center?
+What are the locations of art galleries and community centers near city parks?
+What is the distribution of elderly residents (65+) in districts of Bologna with high concentrations of elderly residents, and where are the gaps in healthcare services in these locations?
+Which neighbourhoods in Bologna have the highest proportion of elderly residents?
+Which are the largest and smallest neighbourhoods in Bologna in terms of population according to the most recent census?
+What is the average size of residential buildings along major streets and squares in Bologna, and how has it changed over time?

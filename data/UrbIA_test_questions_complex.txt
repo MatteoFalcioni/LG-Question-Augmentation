@@ -1,0 +1,45 @@
+How will the neighbourhood evolve in 10 years in terms of services for young people and elderly?  
+What will be the most useful skills for finding work in Bologna in 2035?  
+Will it be easier or harder to find affordable housing in the future?  
+How can we redesign welfare services to anticipate predicted population aging?  
+What housing policies are necessary to guarantee home access for new generations and families?  
+How to orient educational offerings to align with future economic fabric needs?  
+Simulate demographic scenarios to 2040: what will be the impact on health spending and service demand?  
+What is the expected impact of a new social housing policy on population distribution in the city?  
+Create a predictive model to identify future "hotspots" of social fragility.  
+How will my travel times change with the future tram network?  
+Will I have more shared mobility options (e-bikes, scooters, cars) in my neighbourhood?  
+Will it be safer for my children to go to school on foot or by bike in 5 years?  
+What mix of incentives (public transport, sharing) and disincentives (road pricing, ZTL) is most effective to reduce private car use by 20% by 2030?  
+How to plan last-mile logistics development to make it sustainable?  
+What infrastructure investments are priorities to promote zero-emission mobility?  
+Simulate the impact on air quality and congestion of different "work-from-home" scenarios (e.g., 2 days/week).  
+Model the cascade impact of introducing a new tram line on the rest of the public and private transport network.  
+Predict future demand for electric charging stations by neighbourhood.  
+Will my neighbourhood become a more attractive area for new commercial activities?  
+What career opportunities will emerge in Bologna in innovative sectors (AI, green-tech)?  
+Will tourism in my area become more sustainable or more invasive?  
+What policies (fiscal, urban planning) can we implement to attract talent and businesses in future strategic sectors?  
+How can we govern commerce transformation to balance large retail, neighbourhood shops, and e-commerce?  
+What strategy to adopt to de-seasonalize tourist flows and increase average stay?  
+Create a model to predict the economic and employment impact of establishing a large research center  
+Simulate the effects of different tourism policies (e.g., limited numbers in certain areas, variable tourist tax) on economic and social sustainability.  
+Analyze global trends to predict which economic sectors will be most resilient or at risk in Bologna.  
+How will my local energy community contribute to city objectives?  
+In 10 years, will my street be cooler in summer thanks to more trees and less asphalt?  
+What benefits will I get from adopting a point-based waste pricing system?  
+What is the most cost-effective investment plan to achieve carbon neutrality of public buildings?  
+How to design an urban forestation plan that maximizes benefits (heat mitigation, CO2 absorption, wellbeing)  
+What policies can accelerate the transition toward circular economy and waste reduction at source?  
+Model the impact of a "de-paving" program (asphalt removal) on soil permeability and hydrogeological risk reduction.  
+Simulate the production and sharing potential of a neighbourhood "Renewable Energy Community."  
+Predict the city's water needs by 2040 in climate change scenarios.  
+How will my neighbourhood's appearance change with planned urban regeneration projects?  
+Will the city's cultural offering be more inclusive and distributed outside the center too?  
+What will be the impact of new technologies on perceived and real security?  
+How can we incentivize conversion of abandoned areas to create new cultural or residential hubs, avoiding further soil consumption?  
+What digital strategy to adopt to make cultural heritage more accessible and interactive?  
+How to design safe and inclusive public spaces ("security by design") in future development areas?  
+Simulate the long-term impact of a major urban regeneration project on property values and social cohesion in the area.  
+Create a model to optimize the location of new cultural services based on demographic and mobility data.  
+Analyze how IoT data integration (e.g., noise sensors, smart lighting) can support predictive urban security.

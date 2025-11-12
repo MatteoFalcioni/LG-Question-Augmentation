@@ -1,2 +1,6 @@
 .env
 *__pycache__
+*.csv
+*logs_*/
+.vscode/
+restructured_questions_first_draft.py

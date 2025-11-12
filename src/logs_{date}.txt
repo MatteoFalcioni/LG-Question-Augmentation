@@ -1,6 +1,0 @@
-separator_model = gpt-4.1
-separator_temperature = 0.7
-augmenter_model = gpt-4.1
-augmenter_temperature = 0.7
-collator_model = gpt-4o
-collator_temperature = 0.7
