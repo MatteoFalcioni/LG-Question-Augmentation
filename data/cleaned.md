@@ -11,22 +11,26 @@
 - In which areas is there a higher incidence of single-parent families or elderly living alone?   
 - *Does the demographic growth data tell us about housing costs in [Santo Stefano]?*
 - What is the percentage of foreign residents or foreign-born in different neighbourhoods?   
-- *What correlations emerge between population aging and [demand for local health services]?* {UrbIA wants to access the Open Welfare dataset but it is too big}   
+- *What correlations emerge between population aging and [demand for local health services]?* {UrbIA wants to access the Open Welfare dataset but **it is too big**}   
 - Which neighbourhoods show signs of depopulation or demographic overload?   
 - What are the prevalent demographic groups in commercial and business districts?   
-- **Is there a correlation between education and access to services?**
+- *Is there a correlation between education and access to [specific service]?* {or maybe correlation betweene education and welfare}
 - Do transfers between neighbourhoods follow cost-related patterns?  
-- **Can we create a livability index for families?**  
+- *Can we create a [something ] index for families?* {what the hell is a livability index?}
 - How does housing density vary in relation to available residential surface?    
-- **Which bus lines are most delayed?**  
+- *Which bus lines are most delayed?* {not unswearable - no dataset reguarding bus delays!}
 - Where is the updated map of bike lanes/bike sharing?  
-- **What is the street with most accidents in my neighbourhood?**  
+- *What is the street with most accidents in [my neighbourhood]?* {perfectly answerable} 
 - What alternative mobility options are available
 in my neighbourhood?  
 - Where are the potentially most profitable interchange nodes for new services concentrated?  
-- **Where are requests for new stops or micromobility stations concentrated?**  
+- *Where are requests for new stops or micromobility stations concentrated?* {fully answearable, using "segnalazioni-open-citizen-relationship-management-czrm" e "workshop-bcn-mappatura-poi-completa_mobility"}
 - Where are limited traffic zones located // and what impact have they had on pollution?  
-- **What is the average distance from homes to the nearest public transport stop?**  
+- *What is the average distance from homes to the nearest public transport stop?* {very possible, maybe the distribution is exponential so we could move this to the artifact questions}
+
+Done until here (Matteo)
+
+-----
 - Has "City 30" reduced speed and accidents?  
 - Which areas are less served by public transport?  
 - What is the parking occupancy rate?  
