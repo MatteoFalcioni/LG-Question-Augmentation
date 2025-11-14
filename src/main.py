@@ -36,12 +36,13 @@ with open(input_file, "r") as f:
 
 for line in lines:
         config = {"configurable": {"thread_id": "1"}}
-        print("--------------------------------\n")
+        print("="*80)
         
-        print(f"Processing question: {line}")
+        print(f"\nProcessing question: {line}\n")
 
         msg = "Process the following question: \"" + line + "\""
         input_state = {"messages": [HumanMessage(content=msg)]} 
         
         result = graph.invoke(input_state, config=config)
-        #print(result)
+        print("="*80)
+        print(result)
