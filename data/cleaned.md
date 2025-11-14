@@ -1,0 +1,71 @@
+- What is the newest/oldest neighbourhood?
+- What are the waiting times for nurseries?  
+- Where are libraries/youth centers located?
+- Where do young adults (25-35 years) concentrate and what services are missing in these areas?  
+- Which neighbourhoods host the highest proportion of school-age children?  
+- How many people live in the neighbourhood and what is the age composition?  
+- How are neighbourhoods changing (age, nationality)?
+- Which areas have more elderly people and need services?
+- Is the supply of public housing (ERP) sufficient? 
+- How has internal and external migration balance evolved in the last 10 years?   
+- In which areas is there a higher incidence of single-parent families or elderly living alone?   
+- *Does the demographic growth data tell us about housing costs in [Santo Stefano]?*
+- What is the percentage of foreign residents or foreign-born in different neighbourhoods?   
+- *What correlations emerge between population aging and [demand for local health services]?* {UrbIA wants to access the Open Welfare dataset but it is too big}   
+- Which neighbourhoods show signs of depopulation or demographic overload?   
+- What are the prevalent demographic groups in commercial and business districts?   
+- **Is there a correlation between education and access to services?**
+- Do transfers between neighbourhoods follow cost-related patterns?  
+- **Can we create a livability index for families?**  
+- How does housing density vary in relation to available residential surface?    
+- **Which bus lines are most delayed?**  
+- Where is the updated map of bike lanes/bike sharing?  
+- **What is the street with most accidents in my neighbourhood?**  
+- What alternative mobility options are available
+in my neighbourhood?  
+- Where are the potentially most profitable interchange nodes for new services concentrated?  
+- **Where are requests for new stops or micromobility stations concentrated?**  
+- Where are limited traffic zones located // and what impact have they had on pollution?  
+- **What is the average distance from homes to the nearest public transport stop?**  
+- Has "City 30" reduced speed and accidents?  
+- Which areas are less served by public transport?  
+- What is the parking occupancy rate?  
+- What is the level of public transport coverage relative to housing density in different neighbourhoods?   
+- Which road axes register higher logistics load and what criticalities emerge?   
+- **What are the main movement flows between periphery and center during the working week?**   
+- **Which zones show a significant increase in electric mobility demand?**   
+- **Which city zones have the highest number of road accidents?**   
+- Is there correlation between pollution and traffic volumes?    
+- *Do bike usage data reveal commuting patterns?*  
+- **What variations has vehicular traffic had on different urban axes in the last 10 years?**  
+- Is it possible to correlate bike lane density with soft mobility flow distribution?  
+- Which sectors are hiring the most?    
+- **How does the number of neighbourhood shops vary?**   
+- How is tourism trending throughout the year?
+- **Which areas suffer from "commercial desertification"?**  
+- **What is the economic impact of fairs and events?**  
+- **What is the survival rate of new businesses?**
+- Is there a link between new infrastructure and commercial value?  
+- **Can we map "cultural tourism" flows?**   
+- Can we identify industrial districts/clusters?  
+- **What is the air quality where I am?**  
+- **How many square meters of public green space do I have near home?**  
+- **How is waste separation in my neighbourhood?**  
+- **Which public buildings consume the most energy?**  
+- Is green space distribution equitable among neighbourhoods?  
+- Are we meeting per capita waste targets?  
+- Is there correlation between tree density and "heat islands"?  
+- **Can we map "hotspots" of abandoned waste?**  
+- **What is the photovoltaic potential of city rooftops?**  
+- **How many free cultural events are there in my area?**  
+- Is there a map of broken streetlights or potholes?  
+- **What is the theft trend in my neighbourhood?**  
+- **How does security perception vary across neighbourhoods?**  
+- **Which are the safest areas to live or walk?**  
+- Which areas are most exposed to hydrogeological and environmental risks?  
+- Which museums or libraries are less frequented?  
+- **What percentage of public heritage is vacant?**  
+- **Where are degradation reports concentrated?**  
+- Can we correlate demographics with cultural participation?  
+- **Can we cross-reference crime data with urban configuration to identify risk factors?**  
+- **What is the distribution of petty crime events in the urban fabric?**  
