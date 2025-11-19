@@ -1,0 +1,83 @@
+- What is the newest/oldest neighbourhood?
+- What are the average waiting times for nurseries in Bologna?  
+- Where are libraries/youth centers located?
+- Where do young adults (25-35 years) concentrate and what services are missing in these areas?  
+- Which neighbourhoods host the highest proportion of school-age children?  
+- How many people live [San Donato] and what is the age composition?
+- How have the demographics of neighbourhoods changed in the last five years, for example with age composition and nationality of residents?
+- In which areas do more elderly people live, and what services are available? For example with care homes and access to medical care.
+- Is the supply of public housing (ERP) sufficient compared to the population?
+- How has internal and external migration balance evolved in the last 10 years?
+- In which areas is there a higher incidence of single-parent families or elderly living alone?   
+- *Does the demographic growth data tell us about housing costs in [Santo Stefano]?*
+- What is the percentage of foreign residents or foreign-born residents in different neighbourhoods?
+- *What correlations emerge between population aging and [demand for local health services]?* {UrbIA wants to access the Open Welfare dataset but it is too big}   
+- Which neighbourhoods show signs of depopulation or demographic overload?
+- Which age groups are most likely to live in commericial and business districts?
+- *Is there a correlation between neighbourhoods with a higher level of university-educated residents and access to public services?* {alt.data}
+- Where is there the highest demand for houses?
+- *Can we create a cost of living index for someone living in the centre of Bologna?*
+- How has the Consumer Price Index for Bologna changed over the last five years? {use rer_studio_statistico for 2025 data, more years available}
+- How does housing density vary in relation to available residential surface area?
+- *Which bus lines are most delayed?* {no data}
+- Where can I find an updated map or bike lanes/bike sharing spots?
+- *On which street have most accidents occured in [Cirenaica]?*  
+- What mobility options are available in my neighbourhood that are an alternative to cars?
+- What alternative mobility options are available in my neighbourhood?
+- Where is there the most demand for public transport options?
+- *Where are requests for new stops or micromobility stations concentrated?* {fully answearable, using "segnalazioni-open-citizen-relationship-management-czrm" e "workshop-bcn-mappatura-poi-completa_mobility"}
+- Where are limited traffic zones located and what impact have they had on pollution?
+- *What is the average distance from homes to the nearest public transport stop?* {very possible, maybe the distribution is exponential so we could move this to the artifact questions}
+- Has "City 30" reduced speed and accidents? {leading}
+- What effects has 'City 30' had on speed and accidents? {equivalent}
+- Which areas are least served by public transport stops?  
+- What is the parking occupancy rate across [the historic centre]?  
+- What is the level of public transport coverage relative to housing density in different neighbourhoods?   
+- Which road axes have the highest load and how does this affect the road quality?
+- *What are the main movement flows between periphery and center during the working week?* {partially answerable using tper-vigente}
+- *Which zones show the highest demand for electric mobility options?*
+- *Which on average, which month sees the highest number of road accidents?* {answerable fully with alt. data}   
+- Is there a correlation between pollution and traffic volume?    
+- *Does bike usage data reveal commuting patterns?*  
+- *What variations has vehicular traffic had on different urban axes in the last 10 years?* {should be answerable using alt. data}
+- Is it possible to correlate the number of bike lanes in an area with other green transport options available? {leading}
+- Compare the number of bike lanes with the number of other green transport options available, and explain the 
+- Which sectors are hiring the most new workers?    
+- *How does the number of small shops compared to supermarkets vary between districts?* {map}
+- Which times of the year have the highest levels of tourism?
+- *Which areas have the least shops compared to population density?*
+- *What impact do fairs and cultural events have on the economy while they are open?* {no data}
+- *What percentage of new businesses in Bologna are still open after 12 months?* {no data}
+- Is there a link between new infrastructure being built and the cost of housing in the immediate area? {no data}
+- *Analyse the change in number of tourists present in the city throughout 2021.* {alt. data}
+- Identify any industrial districts in Bologna. {no data - map?}
+- *What is the air quality like [around Via Zamboni]?*
+- *How many square meters of publicly accessible green space are there within 2km from Piazza Maggiore?*
+- *What are the waste separation rules in [Bolognina]?* {no data}
+- *Which publicly-owned buildings consume the most energy per year?* {no data}
+- Which district in Bologna has the greatest number of public parks? {map}
+- What types of public green spaces are available in Bologna? {alt. data}
+- Is Bologna meeting local targets for recyling? {alt. data}
+- Is there a correlation between the number of trees in an area and "heat islands"? {map}
+- *Is waste disposal collected according to the schedule?* {no data}
+- *If every rooftop in Bologna was to be covered in photovoltaic cells, what would the expected energy output be over a typical year?* {alt. data, map}
+- *How many free cultural events are there this month in [Saragozza]?* {no data}
+- Which areas of Bologna are the worst for public wi-fi accessibility?
+- Rank the different districts in Bologna based on the quality of their public wi-fi provisions.
+- Is there a map of broken streetlights or potholes?
+- *How many thefts have been reported in [the city centre]?* {no data}
+- Which areas of the city have the highest total crime rate? {no data} 
+- *Which types of crime are most common in Bologna?* {alt. data}
+- Which areas of the city have factors indicating higher polluction, such as poor air quality?
+- Which libraries have bookable rooms? {no data}
+- *Which district has the highest number of degradation reports?*
+- Can we correlate demographics with participation in cultural activites? {leading} {no data}
+- Is there a correlation between participation in cultural activities and a person's demographic? {equivalent} {no data}
+- *Cross-reference data about traffic with information about the parking availability and discuss any correlation.*
+- *Cross-reference yearly crime data on muggings with yearly daily temperature and decide if this is a risk factor.*
+- *Which area has the greatest concentration of crime reports for petty crimes, such as pickpocketing?* {no data}
+- Is the number of homicides in Bologna going up or down in recent years? {alt. data}
+-  Which women's support groups exist in the city centre? {alt. data}
+- Which libraries are the busiest? If no data on footfall exists, use data on number of loans. {alt. data}
+- Is there a correlation between turnout in recent referendums and choosing a left- or right- wing candidate? {alt. data}
+- Is there a correlation between gender and voter turnout in the last ten years? {alt. data}
