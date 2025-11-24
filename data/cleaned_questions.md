@@ -79,5 +79,5 @@
 - Is the number of homicides in Bologna going up or down in recent years? {alt. data}
 -  Which women's support groups exist in the city centre? {alt. data}
 - Which libraries are the busiest? If no data on footfall exists, use data on number of loans. {alt. data}
-- Is there a correlation between turnout in recent referendums and choosing a left- or right- wing candidate? {alt. data}
+- Is there a correlation between turnout in recent elections and choosing a left- or right- wing candidate? {alt. data}
 - Is there a correlation between gender and voter turnout in the last ten years? {alt. data}
