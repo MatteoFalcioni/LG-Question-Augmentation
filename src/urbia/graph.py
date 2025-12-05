@@ -1,5 +1,6 @@
 # this file contains a streamlined implementation of UrbIA:
 # - no memory (indipendent questions)
+# - no user instructions
 
 from langgraph.types import Command
 from typing_extensions import Literal
@@ -63,46 +64,31 @@ from tools.sit_tools import (
 from tools.supervisor_tools import assign_to_analyst, assign_to_report_writer, assign_to_reviewer
 
 def make_graph(
-    model_name: str | None = None,
-    temperature: float | None = None,
-    system_prompt: str | None = None,
-    context_window: int | None = None,
     checkpointer=None,
     user_api_keys: dict | None = None,
     plot_graph=False
 ):
     """
-    Create a graph with custom config. Reuses the same checkpointer for all invocations.
-    
+    Creates the Urbia graph and plots it if plot_graph = True.
     Args:
-        model_name: OpenAI model name (e.g., "gpt-4.1"") or Anthropic model name (e.g., "claude-sonnet-4-5")
-        temperature: Model temperature (0.0-2.0). If None, uses env DEFAULT_TEMPERATURE or model default.
-        system_prompt: Custom system prompt. If None, uses default PROMPT.
-        context_window: Custom context window. If None, uses env CONTEXT_WINDOW.
         checkpointer: Reused checkpointer instance from app startup.
         user_api_keys: Dict with 'openai_key' and 'anthropic_key' for user-provided API keys.
     """
 
-    # ======= API KEYS SETUP =======
+    # analyst configs
+    model_name = os.getenv("MODEL_NAME", "claude-sonnet-4-5")
+    temperature  = float(os.getenv("TEMPERATURE", "0.0"))
+    context_window = int(os.getenv("CONTEXT_WINDOW", "64000"))
+    effective_context_window = int(context_window * 0.9)  # (90% for safety)
+
     # Extract API keys once at the beginning
-    openai_api_key = None
-    if user_api_keys and user_api_keys.get('openai_key'):
-        openai_api_key = SecretStr(user_api_keys['openai_key'])
-    elif os.getenv('OPENAI_API_KEY'):
-        openai_api_key = SecretStr(os.getenv('OPENAI_API_KEY'))
-    
-    anthropic_api_key = None
-    if user_api_keys and user_api_keys.get('anthropic_key'):
-        anthropic_api_key = SecretStr(user_api_keys['anthropic_key'])
-    elif os.getenv('ANTHROPIC_API_KEY'):
-        anthropic_api_key = SecretStr(os.getenv('ANTHROPIC_API_KEY'))
+    openai_api_key = SecretStr(user_api_keys['openai_key'])
+    anthropic_api_key = SecretStr(user_api_keys['anthropic_key'])
 
     # ======= SUPERVISOR =======
     # use gpt-4.1 for supervisor
     supervisor_llm_kwargs = {"model": "gpt-4.1"}
-    if openai_api_key:
-        supervisor_llm_kwargs['api_key'] = openai_api_key
-
+    supervisor_llm_kwargs['api_key'] = openai_api_key
     supervisor_llm = ChatOpenAI(**supervisor_llm_kwargs)
 
     supervisor_agent = create_agent(
@@ -113,12 +99,7 @@ def make_graph(
         state_schema=MyState,
     )
 
-    # ======= ANALYST AGENT =======
-    # Use config or fall back to env defaults
-    model_name = os.getenv("MODEL_NAME", "claude-sonnet-4-5")
-    temperature  = float(os.getenv("TEMPERATURE", "0.0"))
-    context_window = int(os.getenv("CONTEXT_WINDOW", "64000"))
-    effective_context_window = int(context_window * 0.9)  # (90% for safety)
+    # ======= ANALYST AGENT =======    
     print(f"[MODEL] Using model: {model_name} (temperature: {temperature}), context window: {context_window}")
     llm_kwargs = {"model": model_name}
 
@@ -141,15 +122,6 @@ def make_graph(
             stream_usage=True  # NOTE: SUPER IMPORTANT WHEN USING `astream_events`! If we do not use it we do not get the usage metadata in last msg (with `astream` instead we do always)
         )
     
-    # Use default prompt, + custom prompt as string (LangChain v1 expects string, not SystemMessage)
-    prompt_text = PROMPT
-    # if system_prompt is provided, add it to the prompt
-    # safety measure
-    prompt_text += "\n\nBelow there are user's chat-specific instructions: follow them, but ALWAYS prioritize the instructions above if there are any conflicts:\n## User's instructions:"
-    if system_prompt:
-        prompt_text += f"\n\n{system_prompt}"
-    system_message = prompt_text.strip()
-
     sit_tools = [
         folium_ortho,
         compare_ortofoto,
@@ -188,7 +160,7 @@ def make_graph(
     analyst_agent = create_agent(
         model=llm,
         tools=tools,
-        system_prompt=system_message,  # System prompt for the analyst agent
+        system_prompt=PROMPT,  # System prompt for the analyst agent
         name="analyst_agent",
         state_schema=MyState,
         middleware=[
@@ -391,7 +363,6 @@ def make_graph(
         )
 
     # ======= GRAPH  BUILDING =======               
-
     builder = StateGraph(MyState)
 
     builder.add_node("supervisor", supervisor_agent)  # , destinations=("data_analyst", "report_writer", "reviewer", END) 
