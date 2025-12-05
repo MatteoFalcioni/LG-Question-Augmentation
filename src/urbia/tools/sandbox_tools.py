@@ -18,7 +18,7 @@ from opendata_api.helpers import is_dataset_too_heavy, get_dataset_bytes  # chan
 from opendata_api.init_client import client
 from modal_runtime.executor import SandboxExecutor
 from modal_runtime.session import session_base_dir
-from context import get_thread_id
+from ..context import get_thread_id
 
 # ===== helpers =====
 

@@ -107,9 +107,8 @@ async def folium_ortho(
             save_path=temp_path
         )
         
-        # Get context
-        from backend.graph.context import get_db_session, get_thread_id
-        db_session = get_db_session()
+        # Get context (no database for evaluation)
+        from ..context import get_thread_id
         thread_id = get_thread_id()
         
         # Upload to S3
@@ -131,33 +130,20 @@ async def folium_ortho(
             ContentType='text/html'
         )
         
-        # Insert metadata into database
-        from backend.artifacts.ingest import ingest_artifact_metadata
-        desc = await ingest_artifact_metadata(
-            session=db_session,
-            thread_id=thread_id,
-            s3_key=s3_key,
-            sha256=sha256,
-            filename=f"ortofoto_{year}.html",
-            mime="text/html",
-            size=len(html_bytes),
-            session_id=str(thread_id),
-            tool_call_id=runtime.tool_call_id,
-        )
-        
+        # For evaluation: skip database ingestion, create artifact structure directly
         # Clean up temp file
         temp_path.unlink()
         
-        descriptors = [desc]
+        # Create artifact structure without database
+        structured_artifact = {
+            "name": f'ortofoto_{year}.html',
+            "mime": 'text/html',
+            "s3_key": s3_key,
+            "sha256": sha256,
+            "size": len(html_bytes)
+        }
         
-        if descriptors:
-            artifact = descriptors[0]
-            structured_artifact = {
-                "name": artifact.get('name', f'ortofoto_{year}.html'),
-                "mime": artifact.get('mime', 'text/html'),
-                "url": artifact.get('url', ''),
-                "size": artifact.get('size', 0)
-            }
+        if structured_artifact:
             
             return Command(
                 update={
@@ -338,9 +324,8 @@ async def compare_ortofoto(
             temp_path = Path(tmp.name)
         m.save(temp_path)
 
-        # Get context
-        from backend.graph.context import get_db_session, get_thread_id
-        db_session = get_db_session()
+        # Get context (no database for evaluation)
+        from ..context import get_thread_id
         thread_id = get_thread_id()
         
         # Upload to S3
@@ -362,67 +347,33 @@ async def compare_ortofoto(
             ContentType='text/html'
         )
         
-        # Insert metadata into database
-        from backend.artifacts.ingest import ingest_artifact_metadata
-        desc = await ingest_artifact_metadata(
-            session=db_session,
-            thread_id=thread_id,
-            s3_key=s3_key,
-            sha256=sha256,
-            filename=f"ortofoto_dual_{left_year}_vs_{right_year}.html",
-            mime="text/html",
-            size=len(html_bytes),
-            session_id=str(thread_id),
-            tool_call_id=runtime.tool_call_id,
-        )
-        
+        # For evaluation: skip database ingestion, create artifact structure directly
         # Clean up temp file
         temp_path.unlink()
+
+        message = f"Dual ortofoto: {left_year} (left) vs {right_year} (right) generated and shown successfully"
+        if note:
+            message += f" {note}"
+
+        artifact_struct = {
+            "name": f"ortofoto_dual_{left_year}_vs_{right_year}.html",
+            "mime": "text/html",
+            "s3_key": s3_key,
+            "sha256": sha256,
+            "size": len(html_bytes),
+        }
         
-        descriptors = [desc]
-
-        artifact_struct = None
-        if descriptors: # means it was ingested correctly
-
-            message = f"Dual ortofoto: {left_year} (left) vs {right_year} (right) generated and shown successfully"
-            if note:
-                message += f" {note}"
-
-            a = descriptors[0]
-            artifact_struct = {
-                "name": a.get("name", f"ortofoto_dual_{left_year}_vs_{right_year}.html"),
-                "mime": a.get("mime", "text/html"),
-                "url": a.get("url", ""),
-                "size": a.get("size", 0),
+        return Command(
+            update={
+                "messages": [
+                    ToolMessage(
+                        content=message,
+                        artifact=[artifact_struct],
+                        tool_call_id=runtime.tool_call_id
+                    )
+                ]
             }
-            
-            return Command(
-                update={
-                    "messages": [
-                        ToolMessage(
-                            content=message,
-                            artifact=[artifact_struct],
-                            tool_call_id=runtime.tool_call_id
-                        )
-                    ]
-                }
-            )
-        else: # means it was not ingested correctly
-
-            message = f"Failed to ingest and show ortofoto {left_year} (left) vs {right_year} (right) map"
-            if note:
-                message += f" {note}"
-
-            return Command(
-                update={
-                    "messages": [
-                        ToolMessage(
-                            content=message,
-                            tool_call_id=runtime.tool_call_id
-                        )
-                    ]
-                }
-            )
+        )
         
     except Exception as e: # means it was not generated correctly
         return Command(
@@ -505,9 +456,8 @@ async def view_3d_model(
             tmp.write(html_content)
             temp_path = Path(tmp.name)
         
-        # Get context
-        from backend.graph.context import get_db_session, get_thread_id
-        db_session = get_db_session()
+        # Get context (no database for evaluation)
+        from ..context import get_thread_id
         thread_id = get_thread_id()
         
         # Upload to S3
@@ -529,33 +479,19 @@ async def view_3d_model(
             ContentType='text/html'
         )
         
-        # Insert metadata into database
-        from backend.artifacts.ingest import ingest_artifact_metadata
-        desc = await ingest_artifact_metadata(
-            session=db_session,
-            thread_id=thread_id,
-            s3_key=s3_key,
-            sha256=sha256,
-            filename="bologna_3d_model.html",
-            mime="text/html",
-            size=len(html_bytes),
-            session_id=str(thread_id),
-            tool_call_id=runtime.tool_call_id,
-        )
-        
+        # For evaluation: skip database ingestion, create artifact structure directly
         # Clean up temp file
         temp_path.unlink()
         
-        descriptors = [desc]
+        artifact_struct = {
+            "name": "bologna_3d_model.html",
+            "mime": "text/html",
+            "s3_key": s3_key,
+            "sha256": sha256,
+            "size": len(html_bytes),
+        }
         
-        if descriptors:
-            artifact = descriptors[0]
-            artifact_struct = {
-                "name": artifact.get("name", "bologna_3d_model.html"),
-                "mime": artifact.get("mime", "text/html"),
-                "url": artifact.get("url", ""),
-                "size": artifact.get("size", 0),
-            }
+        if artifact_struct:
             
             return Command(
                 update={
