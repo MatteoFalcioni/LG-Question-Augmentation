@@ -1,10 +1,9 @@
 import numpy as np
-from langchain_openai import OpenAIEmbeddings
 
-def compute_similarity(string1, string2, embedding_model="text-embedding-3-large"):
-
-    # Initialize OpenAI embeddings
-    embeddings = OpenAIEmbeddings(model=embedding_model)
+def compute_similarity(string1, string2, embeddings):
+    """
+    Computes the cosine similarity between two vectors given an embedding.
+    """
 
     vector1 = embeddings.embed_query(string1)
     vector2 = embeddings.embed_query(string2)
