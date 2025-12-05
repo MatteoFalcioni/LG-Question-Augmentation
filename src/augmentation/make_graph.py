@@ -1,18 +1,29 @@
 from state import QuestionState, ComponentOutput, QuestionOutput
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
-from langchain_anthropic import ChatAnthropic
+#from langchain_anthropic import ChatAnthropic
 from prompts.augmenter import augmenter_prompt 
 from prompts.separator import separator_prompt 
 from prompts.collator import collator_prompt
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
+import os
+import datetime
+import csv
 
 load_dotenv()
 
+separator_model = os.environ.get("SEPARATOR_MODEL", "gpt-4.1")
+augmenter_model = os.environ.get("AUGMENTER_MODEL", "gpt-4.1")
+collator_model = os.environ.get("COLLATOR_MODEL", "gpt-4o")
+
+separator_temperature = float(os.environ.get("SEPARATOR_TEMPERATURE", 0.7))
+augmenter_temperature = float(os.environ.get("AUGMENTER_TEMPERATURE", 0.7))
+collator_temperature = float(os.environ.get("COLLATOR_TEMPERATURE", 0.7))
+
 separator_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4o-mini", temperature=0),
+    model=ChatOpenAI(model=separator_model, temperature=separator_temperature),
     tools=[],
     system_prompt=separator_prompt,
     state_schema=QuestionState,
@@ -20,7 +31,7 @@ separator_agent = create_agent(
 )
 
 augmenter_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),  # probably higher T in order to have several different augmentations
+    model=ChatOpenAI(model=augmenter_model, temperature=augmenter_temperature),  # probably higher T in order to have several different augmentations
     tools=[],
     system_prompt=augmenter_prompt,
     state_schema=QuestionState,
@@ -28,7 +39,7 @@ augmenter_agent = create_agent(
 )
 
 collator_agent = create_agent(
-    model=ChatOpenAI(model="gpt-4.1", temperature=0.7),
+    model=ChatOpenAI(model=collator_model, temperature=collator_temperature),
     tools=[],
     system_prompt=collator_prompt,
     state_schema=QuestionState,
@@ -44,23 +55,40 @@ def create_graph(plot_graph=False) -> StateGraph:
         return {
             "semantic" : structured_result.semantic,
             "temporal" : structured_result.temporal,
-            "spatial" : structured_result.spatial
+            "spatial" : structured_result.spatial,
+            "stakeholder" : structured_result.stakeholder
         }
 
     def augment_parameters(state : QuestionState) -> QuestionState:
         """Augments the parameters using the augmenter agent"""
         result = augmenter_agent.invoke({"messages": [HumanMessage(f"Update the following parameters: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]})
         structured_result = result["structured_response"]  # this is an OutputTemplate object
-
+        #to append parameters to a csv file:
+        date = datetime.datetime.now().strftime("%d%m%Y_%H%M")
+        file_path = f"./logs/logs_{date}/output_{date}.csv"
+        fields = [' semantic', ' temporal', ' spatial', ' stakeholder']
+        dict = [{
+            " semantic": structured_result.semantic,
+            " temporal": structured_result.temporal,
+            " spatial": structured_result.spatial,
+            " stakeholder": structured_result.stakeholder
+        }]
+        with open(file_path, "a", newline= '\n') as f:
+            writer = csv.DictWriter(f, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(dict)
+            
         return {
             "semantic" : structured_result.semantic,
             "temporal" : structured_result.temporal,
-            "spatial" : structured_result.spatial
+            "spatial" : structured_result.spatial,
+            "stakeholder" : structured_result.stakeholder
         }
 
     def collate_parameters(state : QuestionState) -> QuestionState:
         """Collates the parameters using the collator agent"""
-        file_path = "./output.txt"
+        date = datetime.datetime.now().strftime("%d%m%Y_%H%M")
+        file_path = f"./logs_{date}/output_{date}.csv"
 
         message = [HumanMessage(f"Combine the following parameters into a final question: \n\nSemantic: {state['semantic']}\nTemporal: {state['temporal']}\nSpatial: {state['spatial']}")]
 
@@ -69,8 +97,11 @@ def create_graph(plot_graph=False) -> StateGraph:
 
         final_question = structured_result.final_question
         print(f"***Final question: {final_question}***")
-        with open(file_path, "a") as f:
+        with open("output.txt", "a") as f:
             f.write(final_question + "\n")
+        with open(file_path, "a", newline= '\n') as f:
+            writer = csv.writer(f)
+            writer.writerow([final_question + '\n'])
 
 
     builder = StateGraph(QuestionState)
@@ -92,7 +123,6 @@ def create_graph(plot_graph=False) -> StateGraph:
             f.write(graph.get_graph().draw_mermaid_png())
 
     return graph
-
  
 
 

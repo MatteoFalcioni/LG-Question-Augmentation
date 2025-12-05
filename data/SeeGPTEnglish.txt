@@ -1,0 +1,126 @@
+What is the newest/oldest neighbourhood?
+What are the waiting times for nurseries?  
+Where are libraries/youth centers located?
+Where do young adults (25-35 years) concentrate and what services are missing in these areas?  
+Which neighbourhoods host the highest proportion of school-age children?  
+How many people live in the neighbourhood and what is the age composition?  
+How are neighbourhoods changing (age, nationality)?
+Which areas have more elderly people and need services?
+Is the supply of public housing (ERP) sufficient? 
+How has internal and external migration balance evolved in the last 10 years?   
+In which areas is there a higher incidence of single-parent families or elderly living alone?   
+What is the demographic growth forecast in areas undergoing urban transformation?   
+What is the percentage of foreign residents or foreign-born in different neighbourhoods?   
+What correlations emerge between population aging and demand for local health services?   
+Which neighbourhoods show signs of depopulation or demographic overload?   
+What are the prevalent demographic groups in commercial and business districts?   
+Is there a correlation between education and access to services?
+Do transfers between neighbourhoods follow cost-related patterns?  
+Can we create a livability index for families?  
+How does housing density vary in relation to available residential surface?  
+Is it possible to develop a synthetic livability index for each neighbourhood, normalizing and weighting factors such as accessibility to essential services (schools, healthcare), quality and quantity of public green spaces, cultural offerings, security indicators, and digital connectivity?  
+Can we apply clustering algorithms to segment city neighbourhoods into homogeneous groups (e.g., 'growing young neighbourhoods', 'consolidated residential areas', 'tertiary-focused districts') based on demographic, housing, and economic variables?  
+Which bus lines are most delayed?  
+Where is the updated map of bike lanes/bike sharing?  
+What is the street with most accidents in my neighbourhood?  
+What alternative mobility options are available
+in my neighbourhood?  
+Where are the potentially most profitable interchange nodes for new services concentrated?  
+Where are requests for new stops or micromobility stations concentrated?  
+Where are limited traffic zones located and what impact have they had on pollution?  
+What is the average distance from homes to the nearest public transport stop?  
+Has "City 30" reduced speed and accidents?  
+Which areas are less served by public transport?  
+What is the parking occupancy rate?  
+What is the level of public transport coverage relative to housing density in different neighbourhoods?   
+Which road axes register higher logistics load and what criticalities emerge?   
+What are the main movement flows between periphery and center during the working week?   
+Which zones show a significant increase in electric mobility demand?   
+Which city zones have the highest number of road accidents?   
+Is there correlation between pollution and traffic volumes?  
+Can we create a predictive model of congestion?  
+Do bike sharing data reveal commuting patterns?  
+What variations has vehicular traffic had on different urban axes in the last 10 years?  
+Is it possible to correlate bike lane density with soft mobility flow distribution?  
+Dynamic isochrone map of the city: model that calculates for each city point the time needed to reach key places (hospitals, station, university) using optimal combination of means (public transport, sharing, walking, cycling)  
+RTL modeling as complex graph: is it possible to model the entire public transport   network as a graph and analyze its properties (centrality, vulnerability, connectivity)? Which nodes (stops) would cause the greatest damage to network efficiency if removed or blocked?
+Which sectors are hiring the most?    
+How does the number of neighbourhood shops vary?   
+How is tourism trending throughout the year?
+Which areas suffer from "commercial desertification"?  
+What is the economic impact of fairs and events?  
+What is the survival rate of new businesses?
+Is there a link between new infrastructure and commercial value?  
+Can we map "cultural tourism" flows?   
+Can we identify industrial districts/clusters?  
+Commercial vitality and resilience index: is it possible to create a vitality score for each commercial axis, combining data on shop density and diversity, turnover rate (openings/closures), pedestrian flows, and presence of 'attractors' (e.g., cinemas, offices)?
+Economic specialization and attractiveness: by cross-referencing business registry data with urban planning and mobility data, can we map the city's 'functional districts' (not just industrial, but also knowledge, healthcare, tourism) and analyze their attractiveness for new businesses?
+What is the air quality where I am?  
+How many square meters of public green space do I have near home?  
+How is waste separation in my neighbourhood?  
+Which public buildings consume the most energy?  
+Is green space distribution equitable among neighbourhoods?  
+Are we meeting per capita waste targets?  
+Is there correlation between tree density and "heat islands"?  
+Can we map "hotspots" of abandoned waste?  
+What is the photovoltaic potential of city rooftops?  
+Integrated climate risk map: can we build a climate risk map at individual building or block level, integrating data on heat islands, hydrogeological risk, building energy efficiency, and vulnerability of resident population (e.g., elderly living alone)?  
+How many free cultural events are there in my area?  
+Is there a map of broken streetlights or potholes?  
+What is the theft trend in my neighbourhood?  
+How does security perception vary across neighbourhoods?  
+Which are the safest areas to live or walk?  
+Which areas are most exposed to hydrogeological and environmental risks?  
+Which museums or libraries are less frequented?  
+What percentage of public heritage is vacant?  
+Where are degradation reports concentrated?  
+Can we correlate demographics with cultural participation?  
+Can we cross-reference crime data with urban configuration to identify risk factors?  
+What is the distribution of petty crime events in the urban fabric?  
+Anthropic pressure modeling: is it possible to develop a model that estimates 'anthropic pressure' (a crowding and wear index) for different city areas, cross-referencing data on pedestrian flows, residential density, tourist flows, venue concentration, and number of events?
+
+How will the neighbourhood evolve in 10 years in terms of services for young people and elderly?  
+What will be the most useful skills for finding work in Bologna in 2035?  
+Will it be easier or harder to find affordable housing in the future?  
+How can we redesign welfare services to anticipate predicted population aging?  
+What housing policies are necessary to guarantee home access for new generations and families?  
+How to orient educational offerings to align with future economic fabric needs?  
+Simulate demographic scenarios to 2040: what will be the impact on health spending and service demand?  
+What is the expected impact of a new social housing policy on population distribution in the city?  
+Create a predictive model to identify future "hotspots" of social fragility.  
+How will my travel times change with the future tram network?  
+Will I have more shared mobility options (e-bikes, scooters, cars) in my neighbourhood?  
+Will it be safer for my children to go to school on foot or by bike in 5 years?  
+What mix of incentives (public transport, sharing) and disincentives (road pricing, ZTL) is most effective to reduce private car use by 20% by 2030?  
+How to plan last-mile logistics development to make it sustainable?  
+What infrastructure investments are priorities to promote zero-emission mobility?  
+Simulate the impact on air quality and congestion of different "work-from-home" scenarios (e.g., 2 days/week).  
+Model the cascade impact of introducing a new tram line on the rest of the public and private transport network.  
+Predict future demand for electric charging stations by neighbourhood.  
+Will my neighbourhood become a more attractive area for new commercial activities?  
+What career opportunities will emerge in Bologna in innovative sectors (AI, green-tech)?  
+Will tourism in my area become more sustainable or more invasive?  
+What policies (fiscal, urban planning) can we implement to attract talent and businesses in future strategic sectors?  
+How can we govern commerce transformation to balance large retail, neighbourhood shops, and e-commerce?  
+What strategy to adopt to de-seasonalize tourist flows and increase average stay?  
+Create a model to predict the economic and employment impact of establishing a large research center  
+Simulate the effects of different tourism policies (e.g., limited numbers in certain areas, variable tourist tax) on economic and social sustainability.  
+Analyze global trends to predict which economic sectors will be most resilient or at risk in Bologna.  
+How will my local energy community contribute to city objectives?  
+In 10 years, will my street be cooler in summer thanks to more trees and less asphalt?  
+What benefits will I get from adopting a point-based waste pricing system?  
+What is the most cost-effective investment plan to achieve carbon neutrality of public buildings?  
+How to design an urban forestation plan that maximizes benefits (heat mitigation, CO2 absorption, wellbeing)  
+What policies can accelerate the transition toward circular economy and waste reduction at source?  
+Model the impact of a "de-paving" program (asphalt removal) on soil permeability and hydrogeological risk reduction.  
+Simulate the production and sharing potential of a neighbourhood "Renewable Energy Community."  
+Predict the city's water needs by 2040 in climate change scenarios.  
+How will my neighbourhood's appearance change with planned urban regeneration projects?  
+Will the city's cultural offering be more inclusive and distributed outside the center too?  
+What will be the impact of new technologies on perceived and real security?  
+How can we incentivize conversion of abandoned areas to create new cultural or residential hubs, avoiding further soil consumption?  
+What digital strategy to adopt to make cultural heritage more accessible and interactive?  
+How to design safe and inclusive public spaces ("security by design") in future development areas?  
+Simulate the long-term impact of a major urban regeneration project on property values and social cohesion in the area.  
+Create a model to optimize the location of new cultural services based on demographic and mobility data.  
+Analyze how IoT data integration (e.g., noise sensors, smart lighting) can support predictive urban security.
